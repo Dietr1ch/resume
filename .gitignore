@@ -1,0 +1,23 @@
+# direnv
+# ======
+.direnv/
+
+# LaTeX
+# =====
+# Output
+*.pdf
+# Intermediate files
+*.aux
+*.log
+*.out
+# Misc
+pdfa.xmpi
+*.run.xml
+
+# Bibtex
+# ======
+# Intermediate files
+*.bcf
+*.blg
+*.bbl
+

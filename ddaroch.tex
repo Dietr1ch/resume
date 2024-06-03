@@ -1,0 +1,300 @@
+%%%%%%%%%%%%%%%%%
+% This is an sample CV template created using altacv.cls
+% (v1.7, 9 Aug 2023) written by LianTze Lim (liantze@gmail.com), based on the
+% CV created by BusinessInsider at http://www.businessinsider.my/a-sample-resume-for-marissa-mayer-2016-7/?r=US&IR=T
+%
+%% It may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%%%%%%%%%%%%%%%
+
+% Based on LianTze Lim's AltaCV template: https://www.overleaf.com/latex/templates/recreating-business-insiders-cv-of-marissa-mayer/gtqfpbwncfvp
+
+
+
+% Fixes
+% -----
+% pdfx fix: https://github.com/tectonic-typesetting/tectonic/issues/838#issuecomment-1279979430
+\let\pdfcreationdate=\creationdate
+
+
+
+\documentclass[10pt,a4paper]{altacv}
+\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+% WHEN COMPILING WITH XELATEX PLEASE USE
+% xelatex -shell-escape -output-driver="xdvipdfmx -z 0" ddaroch.tex
+\ifxetexorluatex
+  % If using xelatex or lualatex:
+  \setmainfont{Lato}
+\else
+  % If using pdflatex:
+  \usepackage[default]{lato}
+\fi
+
+
+% Style
+% -----
+
+% Change the colours if you want to
+\definecolor{Gray}{HTML}{686D76}
+\definecolor{Accent}{HTML}{2A629A}
+\definecolor{LightBlue}{HTML}{5AB2FF}
+\definecolor{Aoeu}{HTML}{FF00FF}
+
+\definecolor{SteelBlue}{HTML}{2A629A}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+
+
+\colorlet{name}{Gray}
+\colorlet{tagline}{LightBlue}
+\colorlet{heading}{SteelBlue}
+\colorlet{headingrule}{SteelBlue}
+% \colorlet{subheading}{LightBlue}
+\colorlet{accent}{Accent}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+% Changes
+% Fonts
+% \renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+% \renewcommand{\personalinfofont}{\footnotesize}
+% \renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+% \renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+
+% Drop uppercase on cvsection headings
+
+% \renewcommand{\makecvheader}{%
+%   \begingroup
+%     \altacv@left@photos\hfill%
+%     \begin{minipage}{\dimexpr\linewidth-\altacv@photos@width}%
+%     \raggedright%
+%     {\namefont\color{name}\MakeUppercase{\@name}\par}
+%     \medskip
+%     {\taglinefont\color{tagline}\@tagline\par}
+%     \medskip
+%     {\personalinfofont\@personalinfo\par}
+%     \end{minipage}\hfill%
+%     \altacv@right@photos\par%
+%   \endgroup\medskip
+% }
+
+% Drop uppercase on cvsection headings
+\renewcommand{\cvsection}[2][]{%
+  \nointerlineskip\bigskip%  %% bugfix in v1.6.2
+  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+  {\color{heading}\cvsectionfont #2}\\[-1ex]%
+  {\color{headingrule}\rule{\linewidth}{2pt}\par}\medskip
+}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\cvItemMarker}{{\small\textbullet}}
+\renewcommand{\cvRatingMarker}{\faCircle}
+% ...and the markers for the date/location for \cvevent
+% \renewcommand{\cvDateMarker}{\faCalendar*[regular]}
+% \renewcommand{\cvLocationMarker}{\faMapMarker*}
+
+% Citations
+\usepackage[backend=biber,
+            style=ieee,
+            sorting=ydnt,
+            doi=true,  % TODO Consider dropping the DOI
+            defernumbers=true]{biblatex}
+%% For removing numbering entirely when using a numeric style
+\setlength{\bibhang}{1.25em}
+\DeclareFieldFormat{labelnumberwidth}{\makebox[\bibhang][l]{\itemmarker}}
+\setlength{\biblabelsep}{0pt}
+\defbibheading{pubtype}{\cvsubsection{#1}}
+\renewcommand{\bibsetup}{\vspace*{-\baselineskip}}
+\AtEveryBibitem{%
+  \iffieldundef{doi}{}{\clearfield{url}}%
+}
+
+\addbibresource{ddaroch.bib}  % ./ddaroch.bib
+
+
+
+
+\begin{document}
+
+% Info
+% ----
+\name{Dietrich Daroch}
+\surnames{Daroch} % Used to match publications. Supports many surnames
+
+\tagline{Software Engineer}
+\personalinfo{
+  \email{dietrich@daroch.me}    % mailto://dietrich@daroch.me
+  \location{San Francisco, CA}
+  \homepage{dietrich.daroch.me} % https://dietrich.daroch.me/
+  \github{github.com/Dietr1ch}  % https://github.com/Dietr1ch
+  \linkedin{dietrichdaroch}     % https://www.linkedin.com/in/dietrichdaroch/
+
+  % \NewInfoField{gScholar}{\faGitlab}[https://scholar.google.com/citations?user=]
+  % \gScholar{EWMCdCMAAAAJ} % https://scholar.google.com/citations?user=EWMCdCMAAAAJ
+
+  % https://dblp.org/pid/185/2524.html
+  % \NewInfoField{dblpProfile}{\faGitlab}[https://dblp.org/pid/]
+  % \dblpProfile{185/2524.html} % https://dblp.org/pid/185/2524.html
+}
+
+
+
+% Header
+% ------
+\makecvheader
+
+
+% Body
+% ----
+%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+\AtBeginEnvironment{itemize}{\small}
+\columnratio{0.6}
+\begin{paracol}{2}
+
+
+
+% Experience
+% ----------
+\cvsection{Experience}
+
+% Google
+\cvevent{Software Engineer}{Google}{Jan 2017 -- Jan 2024}{San Francisco, CA}
+\begin{itemize}
+  \item Designed and implemented new data ingestion infrastructure to scale with dataset growth and new data freshness demands
+  \item Investigated latency and performance issues leading to improvements on critical user flows
+  \item Managed infrastructure and ensured capacity, availability, and locality of our global deployment
+  \item Created smaller, yet representative reproducible testing environments for benchmarking and release testing
+  \item Lead development of data experimentation tools on personal environments
+  that eliminated coordination delays for developers
+  % \item Devised and implemented a new stable document fingerprinting approach that avoids pitfalls and slowed down changes to our schema
+\end{itemize}
+
+\divider
+
+% PUC
+\cvevent{Lecturer}{PUC Chile}{Aug 2021 -- Dec 2021}{Remote}
+\begin{itemize}
+  \item Co-lectured undergrad AI class. Taught Deductive AI (Search \& Logic)
+\end{itemize}
+
+\divider
+
+% Foris
+\cvevent{Software Engineering Intern}{Foris}{Jan 2014 -- Mar 2014}{Santiago, Chile}
+\begin{itemize}
+  \item Benchmarking and tailoring timetable optimization algorithm for our largest client
+\end{itemize}
+
+
+
+% Publications
+% ------------
+\cvsection{Publications}
+
+\nocite{*}
+\printbibliography[heading=pubtype,
+                   title={\printinfo{\faBook\thinspace}{Journal Articles}},
+                   type=article]
+\divider
+\printbibliography[heading=pubtype,
+                   title={\printinfo{\faUsers\thinspace}{Conference Proceedings}},
+                   type=inproceedings]
+
+
+
+\switchcolumn
+
+
+
+% Life Philosophy
+% ---------------
+\cvsection{Summary}
+Software Engineer interested on correctness, performance and reliability.
+Seven years of experience at Google and a background on Deductive AI research.
+
+
+
+% Awards
+% ------
+\cvsection{Awards}
+
+\cvachievement{\faRocket}{Silver Perfy Award}{Google 2020\newline Latency improvements on serving stack}
+\cvachievement{\faTrophy}{Top-25 winners}{Standford's Global Innovation Tournament 2009\newline Recycling arcade project was one of the 25 winners}
+
+\cvachievement{\faTrophy}{National third place}{ACM ICPC Latin America Regionals, 2010}
+
+
+
+% Skills
+% ------
+\cvsection{Skills}
+
+\cvtag{Distributed Systems}
+\cvtag{Performance}
+\cvtag{Debugging}
+\cvtag{Reliability}
+
+\divider
+
+\cvtag{C++}
+\cvtag{Linux}
+\cvtag{Git}
+\cvtag{gRPC}
+\cvtag{Emacs}
+
+% \divider
+%
+% Looking to invest on
+% \vspace{0.1cm}
+%
+% \cvtag{Rust}
+% \cvtag{Haskell}
+% \cvtag{SQL}
+% \cvtag{Python}
+
+
+
+% Languages
+% ---------
+% \cvsection{Languages}
+% \cvskill{Spanish}{5}
+% \cvskill{English}{4}
+% %\cvskill{German}{0.5}
+
+
+
+% Education
+% ---------
+\cvsection{Education}
+
+\cvevent{M.Sc.\ in\ Computer\ Science}{PUC Chile}{Aug 2015 -- Dec 2016}{}
+
+\begin{itemize}
+  \item Research on AI Search applications to Distributed Graph Databases
+  \item Completed all coursework
+\end{itemize}
+
+\divider
+\cvevent{B.Sc.\ in\ Computer\ Science}{PUC Chile}{Mar 2009 -- Dec 2016}{}
+
+\begin{itemize}
+  \item Teaching assistant on Artificial Intelligence, Operating Systems and Competitive Programming classes
+  \item $3^{rd}$ best score on ABET exam
+  \item Research on Real-time Heuristic Search Algorithms
+\end{itemize}
+
+\end{paracol}
+\end{document}
