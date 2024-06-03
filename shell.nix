@@ -45,15 +45,8 @@ pkgs.mkShell {
   buildInputs = with pkgs; [
     gnumake
 
-    custom_texlive
-    # texlive.combined.scheme-small
-    texlive.combined.scheme-medium
-    # texlive.combined.scheme-full
-
-    biber
-    biblatex-check
-
-    font-awesome_6
     texlivePackages.fontawesome
+    biber
+    custom_texlive
   ];
 }
