@@ -1,0 +1,18 @@
+#+title: Résumé
+
+* Info
+This is a LaTeX project based on [[https://www.overleaf.com/latex/templates/recreating-business-insiders-cv-of-marissa-mayer/gtqfpbwncfvp][LianTze Lim's AltaCV template]].
+
+* Build
+I'm using Nix to set up the environment (See [[./shell.nix]]), but GNUMake to build
+it as I don't want to clutter my local nix store with all my temporary builds.
+
+#+begin_src fish
+  make
+#+end_src
+
+* Changes
+** AltaCV
+The original function to highlight publication names didn't work for me in
+XeLaTeX, so I simplified it to simply match on surnames as delimiters seemed
+inconsistent after debugging with ~\wlog{}~.
