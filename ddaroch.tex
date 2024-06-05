@@ -125,12 +125,30 @@
 \addbibresource{ddaroch.bib}  % ./ddaroch.bib
 
 
+% Metadata date helper
+\usepackage[en-US]{datetime2}
+\newcommand{\docdate}[1]{%
+  \DTMsavetimestamp{creation}{#1T00:00:00-07:00}%
+  \date{\DTMusedate{creation}}%
+  {\DTMsetstyle{pdf}
+  \pdfinfo{
+    /CreationDate (\DTMuse{creation})
+    /ModDate      (\DTMuse{creation})
+  }}%
+}
 
+% Metadata
+% --------
+\def \borkedresume{r\string\351sum\string\351}
+
+\title{Dietrich Daroch's résumé}
+\author{Dietrich Daroch}
+\docdate{2024-06-02}
 \pdfinfo{
+   /Title  (Dietrich Daroch's \borkedresume)
    /Author (Dietrich Daroch)
-   /Title  (Dietrich Daroch's résumé)
-   /Subject (Dietrich Daroch's résumé)
-   /Keywords (résumé;resume;CV;Software Engineer)
+   /Subject (Dietrich Daroch's \borkedresume)
+   /Keywords (\borkedresume;resume;CV;Software Engineer)
 }
 
 \begin{document}

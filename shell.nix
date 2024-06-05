@@ -35,6 +35,9 @@ let
       pdfx
       xmpincl
 
+      # Metadata
+      datetime2
+
       bigfoot;
 
       #(setq org-latex-compiler "lualatex")
