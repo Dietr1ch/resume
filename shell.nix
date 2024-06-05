@@ -48,5 +48,7 @@ pkgs.mkShell {
     texlivePackages.fontawesome
     biber
     custom_texlive
+
+    poppler_utils
   ];
 }
