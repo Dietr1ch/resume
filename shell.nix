@@ -53,5 +53,6 @@ pkgs.mkShell {
     custom_texlive
 
     poppler_utils
+    qpdf
   ];
 }
