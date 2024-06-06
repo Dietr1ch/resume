@@ -8,6 +8,7 @@ all: ddaroch.pdf
 	@echo "Building PDF"
 	xelatex -halt-on-error -interaction=nonstopmode $<
 	xelatex -halt-on-error -interaction=nonstopmode $<
+	pdfinfo $@
 
 # Bibliography
 # ------------
